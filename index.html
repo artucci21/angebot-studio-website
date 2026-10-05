@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Angebot Studio – Aus Anfragen werden Angebote</title>
+    <meta
+      name="description"
+      content="Angebot Studio erstellt aus Kundenanfragen und eingesprochenen Notizen prüfbare Angebotsentwürfe – mit Ihren eigenen Artikeln, Preisen und Regeln. Die KI ordnet zu, gerechnet wird mit Ihren Katalogpreisen."
+    />
+    <meta name="theme-color" content="#121110" />
+    <link rel="canonical" href="https://angebot-studio.de/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/caveat-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Angebot Studio" />
+    <meta property="og:title" content="Angebot Studio – Aus Anfragen werden Angebote" />
+    <meta
+      property="og:description"
+      content="Prüfbare Angebotsentwürfe in Minuten – mit Ihren eigenen Artikeln, Preisen und Regeln. Für Handwerks- und Dienstleistungsbetriebe."
+    />
+    <meta property="og:url" content="https://angebot-studio.de/" />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <!-- Wiederverwendete Symbole -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-haken" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5" />
+      </symbol>
+      <symbol id="i-pfeil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m3.5 6.5 8.5 6.5 8.5-6.5" />
+      </symbol>
+      <symbol id="i-kreis" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M27 5c12 0 21 9 20 21-1 12-11 21-23 20C12 45 5 36 6 25 7 13 16 5 30 6.5" />
+      </symbol>
+    </svg>
+
+    <header class="kopf nacht" id="kopf">
+      <div class="container kopf-innen">
+        <a class="logo" href="#top" aria-label="Angebot Studio – zum Seitenanfang">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M9 7h30a5 5 0 0 1 5 5v17a5 5 0 0 1-5 5H23l-9 8v-8H9a5 5 0 0 1-5-5V12a5 5 0 0 1 5-5z" fill="#B5452F" />
+            <rect x="12" y="14" width="20" height="3.2" rx="1.6" fill="#F4EFEA" />
+            <rect x="12" y="21" width="13" height="3.2" rx="1.6" fill="#F4EFEA" />
+            <rect x="29" y="19.5" width="7" height="7" rx="1.5" fill="#2F2F2F" />
+          </svg>
+          <span class="logo-wort" aria-hidden="true"><b>angebot</b><span class="logo-studio">studio</span></span>
+        </a>
+        <nav class="kopf-nav" aria-label="Hauptnavigation">
+          <ul class="kopf-links">
+            <li><a href="#ablauf">So funktioniert’s</a></li>
+            <li><a href="#vorteile">Vorteile</a></li>
+            <li><a href="#preise">Preise</a></li>
+            <li><a href="#fragen">Fragen</a></li>
+          </ul>
+          <div class="kopf-aktionen">
+            <a class="knopf knopf-rahmen knopf-klein" href="https://app.angebot-studio.de/login">Anmelden</a>
+            <a class="knopf knopf-primaer knopf-klein" href="#pilot">Pilotkunde werden</a>
+            <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="menue" id="menue-knopf">
+              <span class="sr-only">Menü öffnen</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+      <div class="menue" id="menue">
+        <a href="#ablauf">So funktioniert’s</a>
+        <a href="#vorteile">Vorteile</a>
+        <a href="#preise">Preise</a>
+        <a href="#fragen">Fragen</a>
+        <a href="https://app.angebot-studio.de/login">Anmelden</a>
+        <a class="knopf knopf-primaer" href="#pilot">Pilotkunde werden</a>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <!-- ============ Hero ============ -->
+      <section class="hero nacht raster" id="top" aria-labelledby="hero-titel">
+        <div class="container hero-innen">
+          <div>
+            <p class="hero-marke">Für Handwerk &amp; Service</p>
+            <h1 id="hero-titel">
+              Aus Anfragen werden
+              <span class="unterstrichen"
+                >Angebote.<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                  <path
+                    d="M3 8 C 48 3, 120 2, 197 6"
+                    pathLength="1"
+                    class="skizze-strich"
+                    style="--d: 0.5s; --dauer: 0.7s"
+                    fill="none"
+                    stroke="#D9694F"
+                    stroke-width="3.5"
+                    stroke-linecap="round" /></svg
+              ></span>
+            </h1>
+            <p class="hero-text">
+              Kundenanfrage einfügen oder vor Ort einsprechen – <strong>Angebot Studio</strong> stellt in Minuten einen
+              prüfbaren Entwurf aus Ihren eigenen Artikeln, Preisen und Regeln zusammen. Sie prüfen, ergänzen und
+              versenden.
+            </p>
+            <div class="hero-aktionen">
+              <a class="knopf knopf-primaer" href="#pilot">
+                Pilotkunde werden
+                <svg aria-hidden="true"><use href="#i-pfeil" /></svg>
+              </a>
+              <a class="knopf knopf-rahmen" href="#ablauf">So funktioniert’s</a>
+            </div>
+            <ul class="hero-fakten">
+              <li><svg aria-hidden="true"><use href="#i-haken" /></svg>30 Tage kostenlos testen</li>
+              <li><svg aria-hidden="true"><use href="#i-haken" /></svg>Die KI rechnet nie</li>
+              <li><svg aria-hidden="true"><use href="#i-haken" /></svg>Server in der EU</li>
+            </ul>
+          </div>
+          <div class="hero-bild">
+            <svg viewBox="28 34 584 470" class="hero-skizze" role="img" aria-label="Skizze: Aus einer Anfrage in einer Sprechblase wird ein geprüftes Angebot mit Positionen und Summe" preserveAspectRatio="xMidYMid meet" fill="none" stroke-linecap="round" stroke-linejoin="round"><defs><filter id="skizze-wackel" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3"></feDisplacementMap></filter></defs><g transform="translate(64 432) rotate(-26)" stroke="#F4EFEA" stroke-width="1.8" filter="url(#skizze-wackel)"><path d="M0 -9 H150 L182 0 L150 9 H0 Z" pathLength="1" class="skizze-strich" style="--d:0s;--dauer:1s" stroke-opacity="0.8"></path><path d="M0 -3 H150 M0 3 H150" pathLength="1" class="skizze-strich" style="--d:0.6s;--dauer:0.6s" stroke-opacity="0.35"></path><path d="M150 -9 V9" pathLength="1" class="skizze-strich" style="--d:0.8s;--dauer:0.2s" stroke-opacity="0.8"></path><path d="M173 -2.5 L182 0 L173 2.5" pathLength="1" class="skizze-strich" style="--d:0.9s;--dauer:0.2s" stroke-opacity="0.9"></path><path d="M0 -9 H-16 a5 5 0 0 0 -5 5 V4 a5 5 0 0 0 5 5 H0" pathLength="1" class="skizze-strich" style="--d:0.7s;--dauer:0.4s" stroke="#D9694F"></path><path d="M-6 -9 V9" pathLength="1" class="skizze-strich" style="--d:0.9s;--dauer:0.2s" stroke="#D9694F" stroke-opacity="0.6"></path></g><g transform="rotate(-4 126 138)" stroke="#F4EFEA" filter="url(#skizze-wackel)"><path d="M66 68 h120 a20 20 0 0 1 20 20 v68 a20 20 0 0 1 -20 20 H122 l-36 32 v-32 H66 a20 20 0 0 1 -20 -20 V88 a20 20 0 0 1 20 -20 z" pathLength="1" class="skizze-strich" style="--d:0.1s;--dauer:0.9s" stroke-width="2.2" stroke-opacity="0.9"></path><path d="M68 71 h117 a19 19 0 0 1 19 19 v66 a19 19 0 0 1 -19 19 H121 l-33 29 v-29 H68 a19 19 0 0 1 -19 -19 V90 a19 19 0 0 1 19 -19 z" pathLength="1" class="skizze-strich" style="--d:0.35s;--dauer:0.9s" stroke-width="1.2" stroke-opacity="0.3"></path><path d="M130 106 q3.2 -11.5 6.3 0 q3.8 -11.7 7.6 0 q3.3 -11.7 6.5 0 q3.2 -9.9 6.4 0 q4.3 -11.0 8.6 0 q3.0 -10.9 5.9 0 q4.1 -7.2 8.2 0 q2.7 -8.5 5.4 0" pathLength="1" class="skizze-strich" style="--d:0.9s;--dauer:0.4s" stroke-width="1.6" stroke-opacity="0.65"></path><path d="M68 132 q3.3 -18.0 6.6 0 q4.1 -7.7 8.3 0 q2.8 -18.0 5.6 0 q2.7 -8.6 5.5 0 m7.5 0 q3.8 -8.1 7.5 0 q3.1 -9.8 6.3 0 m11.0 0 q3.4 -18.0 6.8 0 q4.4 -6.0 8.8 0 q4.3 -10.4 8.6 0 q4.1 -18.0 8.2 0 q4.1 -6.0 8.2 0 q4.1 -6.4 8.3 0 q3.1 -9.1 6.3 0" pathLength="1" class="skizze-strich" style="--d:1.1s;--dauer:0.5s" stroke-width="1.6" stroke-opacity="0.65"></path><path d="M68 156 q3.6 -9.9 7.3 0 q3.2 -6.0 6.3 0 q2.9 -8.2 5.8 0 m11.0 0 q3.1 -18.0 6.2 0 m9.8 0 q4.2 -18.0 8.5 0 q2.8 -11.9 5.6 0 q4.1 -18.0 8.1 0 q3.3 -11.7 6.7 0 q3.8 -6.4 7.6 0" pathLength="1" class="skizze-strich" style="--d:1.35s;--dauer:0.4s" stroke-width="1.6" stroke-opacity="0.65"></path></g><g transform="rotate(-4 126 138)" fill="#F4EFEA"><text class="skizze-text" style="--d:0.8s;font-family:var(--font-hand)" x="68" y="108" font-size="24" fill-opacity="0.85">Hallo,</text><text class="skizze-text" style="--d:1.6s;font-family:var(--font-hand)" x="152" y="161" font-size="26" fill-opacity="0.85">?</text></g><text class="skizze-text" style="--d:1.2s;font-family:var(--font-hand)" x="104" y="240" font-size="24" fill="#F4EFEA" fill-opacity="0.6">Anfrage</text><g stroke="#D9694F" stroke-width="2.4" filter="url(#skizze-wackel)"><path d="M218 126 C 252 68, 330 66, 352 128" pathLength="1" class="skizze-strich" style="--d:1.5s;--dauer:0.6s"></path><path d="M354 112 L352 128 L340 117" pathLength="1" class="skizze-strich" style="--d:2s;--dauer:0.2s"></path></g><text class="skizze-text" style="--d:1.8s;font-family:var(--font-hand)" x="232" y="62" font-size="24" fill="#D9694F">KI ordnet zu</text><g transform="rotate(2.5 450 305)"><path d="M320 140 H550 L580 170 V470 H320 Z" fill="#F4EFEA" fill-opacity="0.045" class="skizze-text" style="--d:2.1s"></path><g stroke="#F4EFEA" filter="url(#skizze-wackel)"><path d="M320 140 H550 L580 170 V470 H320 Z" pathLength="1" class="skizze-strich" style="--d:2.1s;--dauer:0.9s" stroke-width="2.2" stroke-opacity="0.9"></path><path d="M323 143 H549 L583 173 V473 H323 Z" pathLength="1" class="skizze-strich" style="--d:2.3s;--dauer:0.9s" stroke-width="1.2" stroke-opacity="0.3"></path><path d="M550 140 V170 H580" pathLength="1" class="skizze-strich" style="--d:2.9s;--dauer:0.25s" stroke-width="1.8" stroke-opacity="0.8"></path><path d="M334 478 l10 10 M348 478 l10 10 M362 478 l10 10 M376 478 l10 10 M390 478 l10 10 M404 478 l10 10 M418 478 l10 10 M432 478 l10 10 M446 478 l10 10 M460 478 l10 10 M474 478 l10 10 M488 478 l10 10 M502 478 l10 10 M516 478 l10 10 M530 478 l10 10 M544 478 l10 10 M558 478 l10 10 M572 478 l10 10 M588 182 l10 10 M588 196 l10 10 M588 210 l10 10 M588 224 l10 10 M588 238 l10 10 M588 252 l10 10 M588 266 l10 10 M588 280 l10 10 M588 294 l10 10 M588 308 l10 10 M588 322 l10 10 M588 336 l10 10 M588 350 l10 10 M588 364 l10 10 M588 378 l10 10 M588 392 l10 10 M588 406 l10 10 M588 420 l10 10 M588 434 l10 10 M588 448 l10 10 M588 462 l10 10" pathLength="1" class="skizze-strich" style="--d:2.8s;--dauer:1s" stroke-width="1.2" stroke-opacity="0.3"></path><path d="M346 204 q4.3 -18.0 8.6 0 q3.3 -18.0 6.6 0 q3.2 -9.4 6.5 0 q2.7 -18.0 5.5 0 q2.9 -7.0 5.7 0 q3.9 -7.1 7.9 0 q4.3 -10.8 8.5 0 q2.9 -7.5 5.7 0 q3.7 -6.2 7.4 0 q2.6 -18.0 5.2 0 q3.8 -11.3 7.5 0 q3.3 -7.7 6.6 0 q3.3 -6.5 6.6 0" pathLength="1" class="skizze-strich" style="--d:3s;--dauer:0.3s" stroke-width="1.3" stroke-opacity="0.45"></path><path d="M368 236 q3.8 -18.0 7.6 0 q2.7 -10.3 5.4 0 q3.2 -7.4 6.3 0 q4.2 -18.0 8.4 0 q3.1 -8.1 6.2 0 q3.0 -5.8 6.0 0 q2.6 -8.1 5.2 0 q3.7 -10.1 7.4 0 q4.2 -5.4 8.4 0 q4.2 -10.5 8.5 0 q4.2 -10.4 8.4 0 q3.7 -7.1 7.4 0 q4.0 -9.5 8.1 0 q4.0 -6.4 8.0 0 q2.9 -8.6 5.9 0" pathLength="1" class="skizze-strich" style="--d:3.1s;--dauer:0.35s" stroke-width="1.5" stroke-opacity="0.7"></path><path d="M368 270 q2.8 -18.0 5.5 0 m10.4 0 q3.7 -8.8 7.3 0 q3.4 -9.4 6.8 0 q4.2 -9.9 8.4 0 q4.0 -18.0 8.1 0 q4.1 -18.0 8.2 0 m8.7 0 q3.2 -10.8 6.4 0 q2.6 -10.8 5.2 0 q3.1 -9.7 6.2 0 q3.8 -8.9 7.6 0" pathLength="1" class="skizze-strich" style="--d:3.25s;--dauer:0.35s" stroke-width="1.5" stroke-opacity="0.7"></path><path d="M368 304 q3.9 -11.9 7.7 0 q4.2 -11.7 8.3 0 q3.9 -18.0 7.7 0 q3.0 -18.0 6.0 0 q3.5 -11.8 7.0 0 m10.9 0 q4.4 -8.7 8.7 0 q3.6 -9.7 7.3 0 q3.9 -10.0 7.7 0 m11.8 0 q4.2 -5.7 8.4 0 q4.1 -7.9 8.2 0 q3.4 -5.1 6.8 0 q3.9 -9.9 7.9 0 q4.2 -6.0 8.5 0" pathLength="1" class="skizze-strich" style="--d:3.4s;--dauer:0.35s" stroke-width="1.5" stroke-opacity="0.7"></path><path d="M368 338 q4.2 -18.0 8.4 0 q3.6 -9.6 7.2 0 q2.9 -18.0 5.8 0 q2.8 -6.2 5.5 0 m8.5 0 q3.7 -6.9 7.4 0 q3.0 -6.8 6.0 0 q4.3 -10.4 8.6 0 q2.8 -8.7 5.6 0 q3.9 -9.0 7.9 0" pathLength="1" class="skizze-strich" style="--d:3.55s;--dauer:0.35s" stroke-width="1.5" stroke-opacity="0.7"></path><path d="M344 364 H556" pathLength="1" class="skizze-strich" style="--d:3.75s;--dauer:0.3s" stroke-width="1.6" stroke-opacity="0.7"></path></g><g stroke="#D9694F" stroke-width="2" filter="url(#skizze-wackel)"><path d="M345 230 l4 5 l8 -10" pathLength="1" class="skizze-strich" style="--d:3.15s;--dauer:0.2s"></path><path d="M345 264 l4 5 l8 -10" pathLength="1" class="skizze-strich" style="--d:3.3s;--dauer:0.2s"></path><path d="M345 298 l4 5 l8 -10" pathLength="1" class="skizze-strich" style="--d:3.4499999999999997s;--dauer:0.2s"></path><path d="M345 332 l4 5 l8 -10" pathLength="1" class="skizze-strich" style="--d:3.5999999999999996s;--dauer:0.2s"></path></g><g fill="#F4EFEA"><text class="skizze-text" style="--d:2.8s;font-family:var(--font-hand)" x="344" y="190" font-size="36" font-weight="600">Angebot</text><text class="skizze-text" style="--d:3.2s;font-family:var(--font-hand)" x="556" y="238" font-size="20" text-anchor="end" fill-opacity="0.8">1.840,00</text><text class="skizze-text" style="--d:3.35s;font-family:var(--font-hand)" x="556" y="272" font-size="20" text-anchor="end" fill-opacity="0.8">960,00</text><text class="skizze-text" style="--d:3.5s;font-family:var(--font-hand)" x="556" y="306" font-size="20" text-anchor="end" fill-opacity="0.8">1.180,00</text><text class="skizze-text" style="--d:3.6500000000000004s;font-family:var(--font-hand)" x="556" y="340" font-size="20" text-anchor="end" fill-opacity="0.8">300,00</text><text class="skizze-text" style="--d:3.85s;font-family:var(--font-hand)" x="344" y="400" font-size="24" fill-opacity="0.85">Summe</text><text class="skizze-text" style="--d:3.85s;font-family:var(--font-hand)" x="556" y="400" font-size="27" font-weight="700" text-anchor="end">4.280,00 €</text></g><g stroke="#D9694F" stroke-width="2.2" filter="url(#skizze-wackel)"><path d="M450 410 C 480 407, 520 412, 558 408" pathLength="1" class="skizze-strich" style="--d:4.05s;--dauer:0.3s"></path><path d="M452 417 C 485 414, 522 419, 556 415" pathLength="1" class="skizze-strich" style="--d:4.25s;--dauer:0.3s"></path></g></g><g transform="rotate(-12 398 448)"><g stroke="#D9694F" filter="url(#skizze-wackel)"><path d="M398 416 a32 32 0 1 1 -0.1 0" pathLength="1" class="skizze-strich" style="--d:4.4s;--dauer:0.5s" stroke-width="2.2"></path><path d="M398 422 a26 26 0 1 1 -0.1 0" pathLength="1" class="skizze-strich" style="--d:4.55s;--dauer:0.5s" stroke-width="1.2" stroke-opacity="0.6"></path></g><text class="skizze-text" style="--d:4.8s;font-family:var(--font-hand)" x="398" y="454" font-size="19" font-weight="700" text-anchor="middle" fill="#D9694F">geprüft</text></g></svg>
+          </div>
+        </div>
+        <div class="container">
+          <ol class="hero-aussagen">
+            <li><span>01</span>Die KI ordnet zu, gerechnet wird mit Ihren Katalogpreisen.</li>
+            <li><span>02</span>Anfahrt, Zuschläge und Mindestauftrag werden nie vergessen.</li>
+            <li><span>03</span>Nichts geht raus, bevor Sie es geprüft haben.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ Kennen Sie das? ============ -->
+      <section class="abschnitt abschnitt-kalk raster" aria-labelledby="problem-titel">
+        <div class="container problem">
+          <div class="kopfzeile" data-einblenden>
+            <span class="eyebrow">Kennen Sie das?</span>
+            <h2 id="problem-titel">Angebote schreiben kostet Ihre besten Stunden.</h2>
+            <p>
+              Jede Anfrage ist ein möglicher Auftrag. Doch zwischen Baustelle, Kundenterminen und Büro bleibt sie oft
+              liegen – und wer schneller antwortet, hat beim Kunden meist die Nase vorn.
+            </p>
+          </div>
+          <div class="notizzettel" data-strich>
+            <ul aria-label="Was bisher Zeit kostet">
+              <li style="--i: 0">Anfrage dreimal lesen</li>
+              <li style="--i: 1">Artikel im Katalog zusammensuchen</li>
+              <li style="--i: 2">Mengen und Preise abtippen</li>
+              <li style="--i: 3">Anfahrt vergessen</li>
+              <li style="--i: 4">Abends am Küchentisch schreiben</li>
+            </ul>
+            <p class="notizzettel-fazit">→ Das erledigt jetzt Angebot Studio.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Ablauf ============ -->
+      <section class="abschnitt abschnitt-weiss" id="ablauf" aria-labelledby="ablauf-titel">
+        <div class="container">
+          <div class="kopfzeile" data-einblenden>
+            <span class="eyebrow">So funktioniert’s</span>
+            <h2 id="ablauf-titel">Vier Schritte von der Anfrage zum fertigen Angebot.</h2>
+            <p>
+              Die KI übernimmt das Lesen und Zuordnen. Rechnen, Regeln und die letzte Entscheidung bleiben bei Ihnen und
+              Ihren Daten.
+            </p>
+          </div>
+
+          <ol class="schritte">
+            <li class="schritt" data-einblenden style="--i: 0">
+              <span class="schritt-nr"><svg aria-hidden="true"><use href="#i-kreis" /></svg>1</span>
+              <h3>Anfrage einfügen oder einsprechen</h3>
+              <p>E-Mail, Formulartext oder Notiz vom Vor-Ort-Termin – per Kopieren &amp; Einfügen oder per Spracheingabe am Handy.</p>
+            </li>
+            <li class="schritt" data-einblenden style="--i: 1">
+              <span class="schritt-nr"><svg aria-hidden="true"><use href="#i-kreis" /></svg>2</span>
+              <h3>Die KI ordnet zu</h3>
+              <p>Sie liest die Anfrage und wählt passende Artikel, Leistungen und Leistungsvorlagen aus Ihrem Katalog.</p>
+            </li>
+            <li class="schritt" data-einblenden style="--i: 2">
+              <span class="schritt-nr"><svg aria-hidden="true"><use href="#i-kreis" /></svg>3</span>
+              <h3>Angebot Studio rechnet</h3>
+              <p>Preise, Anfahrt nach PLZ, Zuschläge, Mindestauftragswert und Mehrwertsteuer kommen aus Ihren Daten.</p>
+            </li>
+            <li class="schritt" data-einblenden style="--i: 3">
+              <span class="schritt-nr"><svg aria-hidden="true"><use href="#i-kreis" /></svg>4</span>
+              <h3>Sie prüfen und versenden</h3>
+              <p>Unsichere Positionen sind markiert, Rückfragen vorformuliert. Das PDF erscheint in Ihrem Briefkopf.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="container container-weit">
+          <div class="beispiel" data-einblenden>
+            <article class="karte" aria-label="Beispiel einer Kundenanfrage">
+              <div class="karte-kopf">
+                <span><strong>Anfrage</strong> · per E-Mail</span>
+                <span class="punkte" aria-hidden="true"><i></i><i></i><i></i></span>
+              </div>
+              <div class="mail">
+                <p class="mail-betreff">Anfrage Klimaanlage</p>
+                <p>
+                  Hallo zusammen, wir möchten im Dachgeschoss
+                  <mark>das Schlafzimmer (ca. 18 m²) und das Arbeitszimmer (ca. 14 m²) klimatisieren</mark>.
+                </p>
+                <p>Das Außengerät könnte an die Hauswand. <mark>Die Leitungen müssten ca. 8 m</mark> bis nach unten.</p>
+                <p>Viele Grüße<br />Thomas Berger, Lindenweg 7, <mark>82024 Taufkirchen</mark></p>
+              </div>
+            </article>
+
+            <div class="beispiel-pfeil" aria-hidden="true">
+              <svg viewBox="0 0 90 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 26 C 24 6, 56 4, 82 20" />
+                <path d="M70 12 L83 21 L68 25" />
+              </svg>
+              <span class="hand">KI ordnet zu</span>
+            </div>
+
+            <div class="entwurf">
+              <article class="karte" aria-label="Beispiel eines Angebotsentwurfs">
+                <div class="karte-kopf">
+                  <span><strong>Entwurf AN-1042</strong> · Klimatisierung Dachgeschoss</span>
+                  <span class="karte-status">bereit zur Prüfung</span>
+                </div>
+                <table class="entwurf-tabelle">
+                  <thead>
+                    <tr>
+                      <th scope="col">Position</th>
+                      <th scope="col" class="zahl">Menge</th>
+                      <th scope="col" class="zahl spalte-ep">Einzelpreis</th>
+                      <th scope="col" class="zahl">Gesamt</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        Split-Klimagerät 2,5 kW, Set innen/außen<br /><span class="markierung markierung-sicher">sicher</span>
+                      </td>
+                      <td class="zahl">2 Stk</td>
+                      <td class="zahl spalte-ep">1.290,00</td>
+                      <td class="zahl">2.580,00</td>
+                    </tr>
+                    <tr>
+                      <td>Montage Single-Split (Leistungsvorlage)<br /><span class="markierung markierung-sicher">sicher</span></td>
+                      <td class="zahl">2 Geräte</td>
+                      <td class="zahl spalte-ep">690,00</td>
+                      <td class="zahl">1.380,00</td>
+                    </tr>
+                    <tr>
+                      <td>Kältemittelleitung isoliert<br /><span class="markierung markierung-pruefen">abgeleitet</span></td>
+                      <td class="zahl">16 m</td>
+                      <td class="zahl spalte-ep">24,50</td>
+                      <td class="zahl mit-notiz">392,00<span class="randnotiz randnotiz-rechts" aria-hidden="true"><svg viewBox="0 0 52 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M50 8 C 34 2, 16 4, 4 14 M4 14 l9 -1 M4 14 l3 -8" /></svg>2 × „ca. 8 m“ – bitte prüfen</span></td>
+                    </tr>
+                    <tr>
+                      <td>Kondensatpumpe inkl. Einbauset<br /><span class="markierung markierung-pruefen">Annahme</span></td>
+                      <td class="zahl">2 Stk</td>
+                      <td class="zahl spalte-ep">149,00</td>
+                      <td class="zahl">298,00</td>
+                    </tr>
+                    <tr class="regel">
+                      <td>Anfahrt Zone 2 – Umland<br /><span class="markierung markierung-regel">Preisregel</span></td>
+                      <td class="zahl">1</td>
+                      <td class="zahl spalte-ep">59,00</td>
+                      <td class="zahl mit-notiz">59,00<span class="randnotiz randnotiz-rechts" aria-hidden="true"><svg viewBox="0 0 52 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M50 8 C 34 2, 16 4, 4 14 M4 14 l9 -1 M4 14 l3 -8" /></svg>Anfahrt nach PLZ – automatisch</span></td>
+                    </tr>
+                    <tr class="regel">
+                      <td>Kleinmaterial<br /><span class="markierung markierung-regel">Preisregel</span></td>
+                      <td class="zahl">1</td>
+                      <td class="zahl spalte-ep">89,00</td>
+                      <td class="zahl">89,00</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="entwurf-summe">
+                  <div><span>Netto</span><span>4.798,00 €</span></div>
+                  <div><span>zzgl. 19 % USt.</span><span>911,62 €</span></div>
+                  <div class="gesamt"><span>Gesamt</span><span>5.709,62 €</span></div>
+                </div>
+                <div class="rueckfragen mit-notiz">
+                  <span class="randnotiz randnotiz-links" aria-hidden="true">Rückfragen schon formuliert<svg viewBox="0 0 52 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 6 C 18 2, 36 6, 48 14 M48 14 l-9 -1 M48 14 l-3 -8" /></svg></span>
+                  <strong>Rückfragen an den Kunden</strong>
+                  <ul>
+                    <li>Gibt es am Innengerät ein natürliches Gefälle zum Abfluss?</li>
+                    <li>Ist für das Außengerät ein Stromanschluss in der Nähe?</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+          <p class="beispiel-hinweis">Beispiel mit fiktiven Daten aus einem Musterkatalog für Klimatechnik.</p>
+        </div>
+      </section>
+
+      <!-- ============ Vorteile ============ -->
+      <section class="abschnitt abschnitt-kalk" id="vorteile" aria-labelledby="vorteile-titel">
+        <div class="container">
+          <div class="kopfzeile" data-einblenden>
+            <span class="eyebrow">Ihre Vorteile</span>
+            <h2 id="vorteile-titel">Schneller beim Kunden. Ohne die Kontrolle abzugeben.</h2>
+            <p>
+              Angebot Studio ist kein Chatbot, der Preise rät. Es ist ein Werkzeug, das Ihren Katalog, Ihre Regeln und Ihr
+              Fachwissen konsequent anwendet.
+            </p>
+          </div>
+
+          <div class="vorteile">
+            <article class="vorteil vorteil-gross vorteil-dunkel" data-einblenden style="--i: 0">
+              <span class="vorteil-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="3" width="14" height="18" rx="2" />
+                  <path d="M8 7h8M8 11h2M12 11h0M16 11h0M8 15h2M12 15h0M16 15v2M8 18.5h2" />
+                </svg>
+              </span>
+              <h3>Die KI rechnet nie.</h3>
+              <p>
+                Die KI wählt Positionen und Mengen aus Ihrem Katalog. Jeden Preis, jeden Zuschlag und die Mehrwertsteuer
+                berechnet Angebot Studio ausschließlich aus Ihren eigenen Daten – nachvollziehbar und ohne Überraschungen.
+              </p>
+              <p class="vorteil-zitat">Ihre Preise. Ihre Regeln.</p>
+            </article>
+
+            <article class="vorteil vorteil-gross" data-einblenden style="--i: 1">
+              <span class="vorteil-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="2" width="6" height="12" rx="3" />
+                  <path d="M5 10a7 7 0 0 0 14 0M12 17v4M8 21h8" />
+                </svg>
+              </span>
+              <h3>Vor Ort einsprechen.</h3>
+              <p>
+                Beim Kunden Stichworte und Maße ins Handy sprechen – „Bad 12 m², Fliesen raus, WC tauschen“. Daraus wird
+                eine Notiz und daraus der Angebotsentwurf. Begriffe aus Ihrem Katalog werden erkannt. Direkt im Browser,
+                ohne App.
+              </p>
+              <div class="welle" aria-hidden="true">
+                <i style="--n: 0; --h: 35%"></i><i style="--n: 1; --h: 60%"></i><i style="--n: 2; --h: 85%"></i><i style="--n: 3; --h: 50%"></i
+                ><i style="--n: 4; --h: 95%"></i><i style="--n: 5; --h: 70%"></i><i style="--n: 6; --h: 40%"></i><i style="--n: 7; --h: 80%"></i
+                ><i style="--n: 8; --h: 55%"></i><i style="--n: 9; --h: 100%"></i><i style="--n: 10; --h: 65%"></i><i style="--n: 11; --h: 45%"></i
+                ><i style="--n: 12; --h: 75%"></i><i style="--n: 13; --h: 30%"></i><i style="--n: 14; --h: 60%"></i><i style="--n: 15; --h: 90%"></i
+                ><i style="--n: 16; --h: 50%"></i><i style="--n: 17; --h: 35%"></i><i style="--n: 18; --h: 70%"></i><i style="--n: 19; --h: 45%"></i>
+              </div>
+            </article>
+
+            <article class="vorteil" data-einblenden style="--i: 0">
+              <span class="vorteil-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+                  <circle cx="12" cy="9.5" r="2.5" />
+                </svg>
+              </span>
+              <h3>Nichts wird vergessen.</h3>
+              <p>
+                Anfahrt nach PLZ-Zone, Kleinmaterial, Zuschläge und Mindestauftragswert hinterlegen Sie einmal als
+                Preisregel – sie landen automatisch in jedem passenden Angebot.
+              </p>
+            </article>
+
+            <article class="vorteil" data-einblenden style="--i: 1">
+              <span class="vorteil-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11l3 3 8-8" />
+                  <path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" />
+                </svg>
+              </span>
+              <h3>Sie behalten die Kontrolle.</h3>
+              <p>
+                Jede Position zeigt, wie sicher sie ist und aus welcher Stelle der Anfrage sie stammt. Rückfragen an den
+                Kunden sind schon formuliert. Nichts geht ungeprüft raus.
+              </p>
+            </article>
+
+            <article class="vorteil" data-einblenden style="--i: 2">
+              <span class="vorteil-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 3v5h5M9 13h6M9 17h4" />
+                </svg>
+              </span>
+              <h3>Angebot im eigenen Briefkopf.</h3>
+              <p>
+                PDF nach DIN 5008 mit Ihrem Logo und Ihrer Hausfarbe – passend für jeden Fensterumschlag. Kein fremdes
+                Logo, keine Werbung.
+              </p>
+            </article>
+
+            <article class="vorteil" data-einblenden style="--i: 0">
+              <span class="vorteil-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z" />
+                  <path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
+                </svg>
+              </span>
+              <h3>Ihr Katalog in Minuten.</h3>
+              <p>
+                Artikel und Leistungen per CSV aus Excel oder Ihrer bisherigen Software übernehmen. Häufige Kombinationen
+                speichern Sie als Leistungsvorlage.
+              </p>
+            </article>
+
+            <article class="vorteil" data-einblenden style="--i: 1">
+              <span class="vorteil-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
+                </svg>
+              </span>
+              <h3>Ihr Fachwissen zählt.</h3>
+              <p>
+                Kalkulationswissen in eigenen Worten hinterlegen, etwa „ab dem 2. OG Hubbühne einplanen“ – die KI
+                berücksichtigt es bei jedem Entwurf.
+              </p>
+            </article>
+
+            <article class="vorteil" data-einblenden style="--i: 2">
+              <span class="vorteil-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </span>
+              <h3>Datenschutz ernst genommen.</h3>
+              <p>
+                Server in der EU, jeder Betrieb streng getrennt, Auftragsverarbeitungsvertrag inklusive. Die KI-Anbieter
+                nutzen Ihre Daten nicht zum Training.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Branchen ============ -->
+      <section class="abschnitt nacht raster" aria-labelledby="branchen-titel">
+        <div class="container">
+          <div class="kopfzeile kopfzeile-mitte" data-einblenden>
+            <span class="eyebrow">Für wen?</span>
+            <h2 id="branchen-titel">Für Betriebe, die Angebote aus Anfragen schreiben.</h2>
+            <p>
+              Ihr Branchenwissen steckt in Ihrem Katalog und Ihren Regeln – nicht in starren Vorlagen. Deshalb passt Angebot
+              Studio zu vielen Gewerken.
+            </p>
+          </div>
+          <ul class="branchen" data-einblenden>
+            <li>Klima- &amp; Kältetechnik</li>
+            <li>Elektro</li>
+            <li>Maler &amp; Lackierer</li>
+            <li>Sanitär &amp; Heizung</li>
+            <li>Fliesen &amp; Bodenbeläge</li>
+            <li>Schreiner &amp; Tischler</li>
+            <li>Garten- &amp; Landschaftsbau</li>
+            <li>Gebäudereinigung</li>
+            <li>Dach &amp; Fassade</li>
+            <li>Dienstleister mit Katalog</li>
+          </ul>
+          <p class="branchen-notiz" data-einblenden>
+            Angebot Studio ergänzt Ihre Buchhaltung, etwa Lexware oder sevdesk – es ersetzt sie nicht.
+            <span class="hand">Spezialist für den Weg von der Anfrage zum Angebot.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ Preise ============ -->
+      <section class="abschnitt abschnitt-weiss" id="preise" aria-labelledby="preise-titel">
+        <div class="container">
+          <div class="kopfzeile kopfzeile-mitte" data-einblenden>
+            <span class="eyebrow">Preise</span>
+            <h2 id="preise-titel">Ein Paket für den ganzen Betrieb.</h2>
+            <p>Abgerechnet wird pro Paket, nicht pro Kopf. Manuelle Angebote sind in jedem Paket unbegrenzt.</p>
+          </div>
+
+          <div class="umschalter-wrap">
+            <div class="umschalter" role="group" aria-label="Abrechnungszeitraum">
+              <button type="button" data-zeitraum="monat" aria-pressed="true">Monatlich</button>
+              <button type="button" data-zeitraum="jahr" aria-pressed="false">Jährlich <small>2 Monate geschenkt</small></button>
+            </div>
+          </div>
+
+          <div class="pakete">
+            <article class="paket" data-einblenden style="--i: 0">
+              <h3 class="paket-name">Start</h3>
+              <p class="paket-fuer">Für Einzelunternehmer</p>
+              <p class="preis">
+                <span class="preis-betrag" data-monat="29 €" data-jahr="290 €">29 €</span>
+                <span class="preis-einheit" data-monat="/ Monat" data-jahr="/ Jahr">/ Monat</span>
+              </p>
+              <p class="preis-zusatz" data-monat="netto, monatliche Abrechnung" data-jahr="netto, entspricht 24,17 € im Monat">
+                netto, monatliche Abrechnung
+              </p>
+              <ul class="paket-liste">
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span><strong>1</strong> Nutzer</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span><strong>50</strong> KI-Angebote pro Monat</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span>Spracheingabe inklusive</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span>Katalog, Leistungsvorlagen &amp; Preisregeln</span></li>
+              </ul>
+              <a class="knopf knopf-rahmen" href="#pilot">Pilotzugang anfragen</a>
+            </article>
+
+            <article class="paket paket-empfohlen nacht" data-einblenden style="--i: 1">
+              <p class="paket-notiz" aria-hidden="true">
+                unsere Empfehlung
+                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                  <path d="M6 4 C 22 6, 30 16, 26 34 M26 34 l-6 -7 M26 34 l6 -7" />
+                </svg>
+              </p>
+              <h3 class="paket-name">Profi</h3>
+              <p class="paket-fuer">Für kleine Teams</p>
+              <p class="preis">
+                <span class="preis-betrag" data-monat="59 €" data-jahr="590 €">59 €</span>
+                <span class="preis-einheit" data-monat="/ Monat" data-jahr="/ Jahr">/ Monat</span>
+              </p>
+              <p class="preis-zusatz" data-monat="netto, monatliche Abrechnung" data-jahr="netto, entspricht 49,17 € im Monat">
+                netto, monatliche Abrechnung
+              </p>
+              <ul class="paket-liste">
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span><strong>3</strong> Nutzer</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span><strong>350</strong> KI-Angebote pro Monat</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span>Spracheingabe inklusive</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span>Alles aus Start</span></li>
+              </ul>
+              <a class="knopf knopf-primaer" href="#pilot">Pilotzugang anfragen</a>
+            </article>
+
+            <article class="paket" data-einblenden style="--i: 2">
+              <h3 class="paket-name">Team</h3>
+              <p class="paket-fuer">Für Betriebe mit mehreren Teams</p>
+              <p class="preis">
+                <span class="preis-betrag" data-monat="119 €" data-jahr="1.190 €">119 €</span>
+                <span class="preis-einheit" data-monat="/ Monat" data-jahr="/ Jahr">/ Monat</span>
+              </p>
+              <p class="preis-zusatz" data-monat="netto, monatliche Abrechnung" data-jahr="netto, entspricht 99,17 € im Monat">
+                netto, monatliche Abrechnung
+              </p>
+              <ul class="paket-liste">
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span><strong>10</strong> Nutzer</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span><strong>Unbegrenzt</strong> KI-Angebote (faire Nutzung)</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span>Eigener KI-Schlüssel möglich</span></li>
+                <li><svg aria-hidden="true"><use href="#i-haken" /></svg><span>Alles aus Profi</span></li>
+              </ul>
+              <a class="knopf knopf-rahmen" href="#pilot">Pilotzugang anfragen</a>
+            </article>
+          </div>
+
+          <ul class="alle-pakete" aria-label="In allen Paketen enthalten">
+            <li><strong>In allen Paketen:</strong></li>
+            <li><svg aria-hidden="true"><use href="#i-haken" /></svg>Unbegrenzt manuelle Angebote</li>
+            <li><svg aria-hidden="true"><use href="#i-haken" /></svg>PDF mit Logo &amp; Hausfarbe</li>
+            <li><svg aria-hidden="true"><use href="#i-haken" /></svg>CSV-Import</li>
+            <li><svg aria-hidden="true"><use href="#i-haken" /></svg>Kundenverwaltung</li>
+            <li><svg aria-hidden="true"><use href="#i-haken" /></svg>Server in der EU</li>
+          </ul>
+
+          <div class="extras">
+            <div class="extra" data-einblenden style="--i: 0">
+              <strong>30 Tage kostenlos</strong>
+              <p>Im vollen Profi-Umfang testen – ohne Zahlungsdaten.</p>
+            </div>
+            <div class="extra" data-einblenden style="--i: 1">
+              <strong>Einrichtungsservice · 290 € einmalig</strong>
+              <p>Wir übernehmen Ihren Katalog, legen Leistungsvorlagen und Preisregeln an – Sie starten sofort.</p>
+            </div>
+            <div class="extra" data-einblenden style="--i: 2">
+              <strong>Zusatzkontingent · 19 €</strong>
+              <p>Je 50 weitere KI-Angebote, falls es in einem Monat einmal mehr wird.</p>
+            </div>
+          </div>
+
+          <div class="gruenderpreis" data-einblenden>
+            <div>
+              <span class="hand">Nur für die ersten 10 Pilotbetriebe</span>
+              <h3>Gründerpreis: 50 % Rabatt für 12 Monate.</h3>
+              <p>Gestalten Sie Angebot Studio mit – und sichern Sie sich den halben Preis für das ganze erste Jahr.</p>
+            </div>
+            <a class="knopf" href="#pilot">Platz sichern <svg aria-hidden="true"><use href="#i-pfeil" /></svg></a>
+          </div>
+
+          <p class="preise-fuss">
+            Alle Preise netto pro Paket. Ein KI-Angebot ist ein Entwurf, den die KI aus einer Anfrage oder Sprachnotiz
+            erstellt.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ Fragen ============ -->
+      <section class="abschnitt abschnitt-kalk" id="fragen" aria-labelledby="fragen-titel">
+        <div class="container">
+          <div class="kopfzeile kopfzeile-mitte" data-einblenden>
+            <span class="eyebrow">Häufige Fragen</span>
+            <h2 id="fragen-titel">Gut zu wissen.</h2>
+          </div>
+          <div class="fragen" data-einblenden>
+            <details class="frage">
+              <summary>Rechnet die KI meine Preise aus?</summary>
+              <div class="frage-antwort">
+                <p>
+                  Nein. Die KI liest die Anfrage und wählt passende Positionen und Mengen aus Ihrem Katalog. Preise,
+                  Zuschläge, Anfahrt, Mindestauftragswert und Mehrwertsteuer berechnet Angebot Studio ausschließlich aus
+                  Ihren hinterlegten Daten und Preisregeln.
+                </p>
+              </div>
+            </details>
+            <details class="frage">
+              <summary>Muss ich meinen ganzen Katalog abtippen?</summary>
+              <div class="frage-antwort">
+                <p>
+                  Nein. Artikel und Leistungen importieren Sie per CSV-Datei, etwa aus Excel oder Ihrer bisherigen
+                  Software. Wenn Sie möchten, übernehmen wir die Einrichtung mit Katalog, Leistungsvorlagen und
+                  Preisregeln für einmalig 290 €.
+                </p>
+              </div>
+            </details>
+            <details class="frage">
+              <summary>Was passiert mit den Daten meiner Kunden?</summary>
+              <div class="frage-antwort">
+                <p>
+                  Angebot Studio läuft auf Servern in der EU, und die Daten jedes Betriebs sind streng voneinander
+                  getrennt. Einen Auftragsverarbeitungsvertrag schließen Sie direkt in der Anwendung ab.
+                </p>
+                <p>
+                  Für das Auswerten der Anfragen nutzen wir KI-Anbieter (OpenAI bzw. Anthropic) über deren
+                  Geschäftsschnittstellen – Ihre Daten werden dort nicht zum Training verwendet. Sprachaufnahmen werden
+                  nur in Text umgewandelt und nicht gespeichert.
+                </p>
+              </div>
+            </details>
+            <details class="frage">
+              <summary>Brauche ich eine App?</summary>
+              <div class="frage-antwort">
+                <p>
+                  Nein. Angebot Studio läuft im Browser auf PC, Tablet und Smartphone. Auch die Spracheingabe funktioniert
+                  direkt im Browser – ohne Installation und ohne App-Store.
+                </p>
+              </div>
+            </details>
+            <details class="frage">
+              <summary>Ersetzt Angebot Studio meine Buchhaltungs-Software?</summary>
+              <div class="frage-antwort">
+                <p>
+                  Nein, und das ist Absicht. Angebot Studio ist auf den Weg von der Anfrage zum Angebot spezialisiert.
+                  Rechnungen und Buchhaltung bleiben in Ihrer gewohnten Software, etwa Lexware oder sevdesk.
+                </p>
+              </div>
+            </details>
+            <details class="frage">
+              <summary>Was zählt als KI-Angebot – und was, wenn das Kontingent aufgebraucht ist?</summary>
+              <div class="frage-antwort">
+                <p>
+                  Jeder Entwurf, den die KI aus einer Anfrage oder Sprachnotiz erstellt, zählt als ein KI-Angebot.
+                  Angebote, die Sie selbst aus dem Katalog zusammenstellen, sind unbegrenzt. Reicht das Kontingent einmal
+                  nicht, buchen Sie 50 weitere KI-Angebote für 19 € dazu.
+                </p>
+              </div>
+            </details>
+            <details class="frage">
+              <summary>Wie werde ich Pilotkunde?</summary>
+              <div class="frage-antwort">
+                <p>
+                  Schreiben Sie uns eine kurze E-Mail mit Ihrem Betrieb und Ihrer Branche. Wir richten Ihren Zugang ein,
+                  Sie testen 30 Tage kostenlos im Profi-Umfang – ohne Zahlungsdaten. Die ersten 10 Pilotbetriebe erhalten
+                  den Gründerpreis von 50 % für 12 Monate.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Abschluss ============ -->
+      <section class="abschnitt abschluss nacht raster" id="pilot" aria-labelledby="pilot-titel">
+        <div class="container" data-einblenden>
+          <svg class="stempel" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true">
+            <path d="M50 8 a42 42 0 1 1 -0.1 0" stroke-width="2.4" />
+            <path d="M50 16 a34 34 0 1 1 -0.1 0" stroke-width="1.2" opacity="0.6" />
+            <text x="50" y="58" text-anchor="middle" fill="currentColor" stroke="none" font-family="Caveat, cursive" font-size="24" font-weight="700">
+              geprüft
+            </text>
+          </svg>
+          <span class="eyebrow">Pilotphase</span>
+          <h2 id="pilot-titel">Werden Sie einer der ersten 10 Pilotbetriebe.</h2>
+          <p>
+            Persönliche Einrichtung, 30 Tage kostenlos und 50 % Gründerpreis für ein Jahr. Schreiben Sie uns kurz, welcher
+            Betrieb Sie sind – wir melden uns.
+          </p>
+          <div class="hero-aktionen">
+            <a
+              class="knopf knopf-primaer"
+              href="mailto:info@bursy-consulting.de?subject=Pilotzugang%20Angebot%20Studio&amp;body=Hallo%2C%0A%0Awir%20interessieren%20uns%20f%C3%BCr%20einen%20Pilotzugang%20zu%20Angebot%20Studio.%0A%0ABetrieb%3A%20%0ABranche%3A%20%0AAnsprechpartner%3A%20%0ATelefon%3A%20%0A%0AViele%20Gr%C3%BC%C3%9Fe"
+            >
+              <svg aria-hidden="true"><use href="#i-mail" /></svg>
+              Pilotzugang per E-Mail anfragen
+            </a>
+            <a class="knopf knopf-rahmen" href="https://app.angebot-studio.de/login">Schon dabei? Anmelden</a>
+          </div>
+          <p class="abschluss-mail">
+            Oder direkt an <a href="mailto:info@bursy-consulting.de">info@bursy-consulting.de</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="fuss nacht">
+      <div class="container fuss-innen">
+        <a class="logo" href="#top" aria-label="Angebot Studio – zum Seitenanfang" style="font-size: 1.1rem">
+          <svg viewBox="0 0 48 48" aria-hidden="true" style="width: 1.6rem; height: 1.6rem">
+            <path d="M9 7h30a5 5 0 0 1 5 5v17a5 5 0 0 1-5 5H23l-9 8v-8H9a5 5 0 0 1-5-5V12a5 5 0 0 1 5-5z" fill="#B5452F" />
+            <rect x="12" y="14" width="20" height="3.2" rx="1.6" fill="#F4EFEA" />
+            <rect x="12" y="21" width="13" height="3.2" rx="1.6" fill="#F4EFEA" />
+            <rect x="29" y="19.5" width="7" height="7" rx="1.5" fill="#2F2F2F" />
+          </svg>
+          <span class="logo-wort" aria-hidden="true"><b>angebot</b><span class="logo-studio">studio</span></span>
+        </a>
+        <nav aria-label="Rechtliches">
+          <ul class="fuss-links">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+            <li><a href="https://app.angebot-studio.de/nutzungsbedingungen">Nutzungsbedingungen</a></li>
+            <li><a href="https://app.angebot-studio.de/login">Anmelden</a></li>
+          </ul>
+        </nav>
+        <p class="fuss-copy">© <span id="jahr">2026</span> Angebot Studio</p>
+      </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>

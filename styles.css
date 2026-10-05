@@ -1,0 +1,1753 @@
+/* Angebot Studio – Webseite. Farben und Schriften wie in der App (Ziegel, Graphit, Kalk; Geist + Caveat). */
+
+@font-face {
+  font-family: "Geist";
+  src: url("fonts/geist-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caveat";
+  src: url("fonts/caveat-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ziegel: #b5452f;
+  --ziegel-dunkel: #963822;
+  --ziegel-hell: #d9694f;
+  --graphit: #2f2f2f;
+  --kalk: #f4efea;
+  --kalk-tief: #eae2d9;
+  --papier: #fbf8f5;
+  --nacht: #121110;
+  --nacht-2: #1b1918;
+  --nacht-3: #24211f;
+  --nacht-linie: #34302d;
+
+  --text: #2b2725;
+  --text-leise: #6e6660;
+  --linie: #e3dad1;
+  --nacht-text: #f4efea;
+  --nacht-leise: #a8a09a;
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", "Segoe Print", cursive;
+
+  --breite: 72rem;
+  --rand: clamp(1rem, 4vw, 2.5rem);
+  --radius: 0.625rem;
+  --schatten: 0 1px 2px rgb(47 47 47 / 0.06), 0 8px 24px -8px rgb(47 47 47 / 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ziegel);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.nacht :focus-visible {
+  outline-color: var(--kalk);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  background: var(--kalk);
+  color: var(--graphit);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--breite);
+  margin-inline: auto;
+  padding-inline: var(--rand);
+}
+
+.hand {
+  font-family: var(--font-hand);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* ---------- Flächen ---------- */
+
+.nacht {
+  background: var(--nacht);
+  color: var(--nacht-text);
+  color-scheme: dark;
+}
+
+/* Karo-Raster wie im Skizzenbuch. */
+.raster {
+  position: relative;
+  isolation: isolate;
+}
+
+.raster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--raster-farbe, rgb(47 47 47 / 0.06)) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--raster-farbe, rgb(47 47 47 / 0.06)) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 35%, transparent 100%);
+}
+
+.nacht.raster {
+  --raster-farbe: rgb(244 239 234 / 0.05);
+}
+
+/* ---------- Knöpfe ---------- */
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.875rem;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.knopf:active {
+  transform: translateY(1px);
+}
+
+.knopf svg {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+}
+
+.knopf-primaer {
+  background: var(--ziegel);
+  color: #fff;
+}
+
+.knopf-primaer:hover {
+  background: var(--ziegel-dunkel);
+}
+
+.knopf-rahmen {
+  border-color: var(--linie);
+  background: #fff;
+  color: var(--graphit);
+}
+
+.knopf-rahmen:hover {
+  border-color: var(--graphit);
+}
+
+.nacht .knopf-rahmen {
+  border-color: var(--nacht-linie);
+  background: transparent;
+  color: var(--nacht-text);
+}
+
+.nacht .knopf-rahmen:hover {
+  border-color: var(--nacht-leise);
+  background: rgb(255 255 255 / 0.04);
+}
+
+.knopf-klein {
+  min-height: 2.375rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9375rem;
+}
+
+/* ---------- Logo ---------- */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.logo b {
+  font-weight: 600;
+}
+
+.logo .logo-studio {
+  margin-left: 0.2em;
+  color: var(--ziegel);
+  font-weight: 400;
+}
+
+/* ---------- Kopfzeile ---------- */
+
+.kopf {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid transparent;
+  background: rgb(18 17 16 / 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease;
+}
+
+.kopf.ist-gescrollt {
+  border-bottom-color: var(--nacht-linie);
+}
+
+.kopf-innen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 4.25rem;
+}
+
+.kopf-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.kopf-links {
+  display: flex;
+  gap: 1.75rem;
+  font-size: 0.9375rem;
+}
+
+.kopf-links a {
+  color: var(--nacht-leise);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.kopf-links a:hover {
+  color: var(--nacht-text);
+}
+
+.kopf-aktionen {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menue-knopf {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--nacht-text);
+  cursor: pointer;
+}
+
+.menue-knopf svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  overflow: hidden;
+  background:
+    radial-gradient(110% 70% at 0% 0%, rgb(255 255 255 / 0.06), transparent 60%),
+    linear-gradient(to bottom, var(--nacht) 0%, #191716 100%);
+}
+
+.hero-innen {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(3rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.hero-marke {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--nacht-leise);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero-marke::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ziegel-hell);
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6.2vw, 4.75rem);
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.unterstrichen {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.unterstrichen svg {
+  position: absolute;
+  left: -2%;
+  bottom: -0.16em;
+  width: 104%;
+  height: 0.32em;
+  overflow: visible;
+}
+
+.hero-text {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  color: var(--nacht-leise);
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.hero-text strong {
+  color: var(--nacht-text);
+  font-weight: 500;
+}
+
+.hero-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.hero-fakten {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 2rem;
+  color: var(--nacht-leise);
+  font-size: 0.9375rem;
+}
+
+.hero-fakten li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hero-fakten svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--ziegel-hell);
+}
+
+.hero-bild {
+  position: relative;
+  min-width: 0;
+}
+
+.hero-skizze {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 584 / 470;
+}
+
+.hero-aussagen {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding-block: 1.75rem 2.25rem;
+  border-top: 1px solid var(--nacht-linie);
+}
+
+.hero-aussagen li {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+
+.hero-aussagen span {
+  color: var(--nacht-leise);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Skizze zeichnet sich beim Laden selbst (wie auf der Anmeldeseite der App). */
+.skizze-strich {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: zeichnen var(--dauer, 0.7s) ease-in-out var(--d, 0s) forwards;
+}
+
+.skizze-text {
+  opacity: 0;
+  animation: einblenden 0.6s ease-out var(--d, 0s) forwards;
+}
+
+@keyframes zeichnen {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes einblenden {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Abschnitte ---------- */
+
+.abschnitt {
+  padding-block: clamp(4rem, 10vw, 7.5rem);
+}
+
+.abschnitt-kalk {
+  background: var(--kalk);
+}
+
+.abschnitt-weiss {
+  background: #fff;
+}
+
+.kopfzeile {
+  max-width: 44rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.kopfzeile-mitte {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--ziegel);
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.nacht .eyebrow {
+  color: var(--ziegel-hell);
+}
+
+.kopfzeile h2 {
+  font-size: clamp(2rem, 4.4vw, 3.25rem);
+}
+
+.kopfzeile p {
+  margin-top: 1.1rem;
+  color: var(--text-leise);
+  font-size: 1.125rem;
+}
+
+.nacht .kopfzeile p {
+  color: var(--nacht-leise);
+}
+
+/* ---------- Kennen Sie das? ---------- */
+
+.problem {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.problem .kopfzeile {
+  margin-bottom: 0;
+}
+
+.notizzettel {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--linie);
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 2.45rem, rgb(181 69 47 / 0.12) 2.45rem calc(2.45rem + 1px)),
+    #fff;
+  background-position: 0 1.4rem;
+  box-shadow: var(--schatten);
+  transform: rotate(-0.8deg);
+}
+
+.notizzettel::before {
+  content: "";
+  position: absolute;
+  top: -0.85rem;
+  left: 50%;
+  width: 6.5rem;
+  height: 1.7rem;
+  background: rgb(234 226 217 / 0.85);
+  box-shadow: 0 1px 2px rgb(47 47 47 / 0.08);
+  transform: translateX(-50%) rotate(2deg);
+}
+
+.notizzettel li {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  font-family: var(--font-hand);
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  font-weight: 500;
+  line-height: 2.45rem;
+  color: var(--graphit);
+}
+
+.notizzettel li::after {
+  content: "";
+  position: absolute;
+  left: -0.25rem;
+  right: -0.25rem;
+  top: 52%;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--ziegel);
+  transform: scaleX(var(--strich, 1)) rotate(-1.2deg);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: calc(var(--i, 0) * 0.18s + 0.2s);
+}
+
+.js .notizzettel:not(.ist-sichtbar) li::after {
+  --strich: 0;
+}
+
+.notizzettel-fazit {
+  margin-top: 1.25rem;
+  color: var(--ziegel);
+  font-family: var(--font-hand);
+  font-size: clamp(1.7rem, 3.4vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ---------- Ablauf ---------- */
+
+.schritte {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  counter-reset: schritt;
+}
+
+.schritt {
+  position: relative;
+  padding-top: 0.25rem;
+}
+
+.schritt-nr {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1.1rem;
+  color: var(--ziegel);
+  font-family: var(--font-hand);
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.schritt-nr svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--ziegel);
+}
+
+.schritt h3 {
+  font-size: 1.1875rem;
+  letter-spacing: -0.015em;
+}
+
+.schritt p {
+  margin-top: 0.5rem;
+  color: var(--text-leise);
+  font-size: 0.9875rem;
+}
+
+/* Beispiel: Anfrage → Entwurf */
+.beispiel {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) auto minmax(0, 7fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.karte {
+  border: 1px solid var(--linie);
+  border-radius: calc(var(--radius) * 1.4);
+  background: #fff;
+  box-shadow: var(--schatten);
+}
+
+.karte-kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--linie);
+  font-size: 0.8125rem;
+  color: var(--text-leise);
+}
+
+.karte-kopf strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.punkte {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.punkte i {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--linie);
+}
+
+.mail {
+  padding: 1.1rem 1.25rem 1.35rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.mail-betreff {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.mail p + p {
+  margin-top: 0.6rem;
+}
+
+.mail mark {
+  padding: 0 0.15em;
+  border-radius: 3px;
+  background: rgb(181 69 47 / 0.12);
+  color: inherit;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.beispiel-pfeil {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  color: var(--ziegel);
+  text-align: center;
+}
+
+.beispiel-pfeil svg {
+  width: 5.5rem;
+  height: auto;
+}
+
+.beispiel-pfeil .hand {
+  font-size: 1.5rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.entwurf {
+  position: relative;
+}
+
+.entwurf-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.entwurf-tabelle th {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--linie);
+  color: var(--text-leise);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.entwurf-tabelle td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--kalk-tief);
+  vertical-align: top;
+}
+
+.entwurf-tabelle .zahl {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.entwurf-tabelle tr.regel td {
+  background: var(--papier);
+  color: var(--text-leise);
+}
+
+.markierung {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.markierung::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.markierung-sicher {
+  background: #e8f1ea;
+  color: #2f6b3f;
+}
+
+.markierung-pruefen {
+  background: #fbeee0;
+  color: #8a4b12;
+}
+
+.markierung-regel {
+  background: var(--kalk);
+  color: var(--text-leise);
+}
+
+.entwurf-summe {
+  display: grid;
+  gap: 0.3rem;
+  margin-left: auto;
+  width: min(100%, 17rem);
+  padding: 0.9rem 0.75rem 0.25rem;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.entwurf-summe div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.entwurf-summe .gesamt {
+  margin-top: 0.3rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--graphit);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.rueckfragen {
+  margin: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  background: var(--kalk);
+  font-size: 0.875rem;
+}
+
+.rueckfragen strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+}
+
+.rueckfragen li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--text-leise);
+}
+
+.rueckfragen li::before {
+  content: "?";
+  position: absolute;
+  left: 0;
+  color: var(--ziegel);
+  font-weight: 700;
+}
+
+.mit-notiz {
+  position: relative;
+}
+
+/* Handschriftliche Randnotizen – nur auf breiten Bildschirmen, dort hat der Entwurf rechts Platz dafür. */
+.randnotiz {
+  position: absolute;
+  z-index: 2;
+  display: none;
+  align-items: flex-start;
+  gap: 0.35rem;
+  width: 9rem;
+  color: var(--ziegel);
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.05;
+  text-align: left;
+  white-space: normal;
+  pointer-events: none;
+}
+
+.randnotiz svg {
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 1.3rem;
+  overflow: visible;
+}
+
+.randnotiz-rechts {
+  top: 0.35rem;
+  left: calc(100% + 1.25rem);
+}
+
+.randnotiz-links {
+  top: 0.4rem;
+  right: calc(100% + 1.75rem);
+  width: 10rem;
+  text-align: right;
+}
+
+.container-weit {
+  max-width: 84rem;
+}
+
+@media (min-width: 80rem) {
+  .randnotiz {
+    display: flex;
+  }
+
+  .entwurf {
+    margin-right: 10rem;
+  }
+}
+
+.beispiel-hinweis {
+  margin-top: 1rem;
+  color: var(--text-leise);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+/* ---------- Vorteile ---------- */
+
+.vorteile {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.vorteil {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.6rem;
+  border: 1px solid var(--linie);
+  border-radius: calc(var(--radius) * 1.4);
+  background: #fff;
+}
+
+.vorteil-gross {
+  grid-column: span 3;
+}
+
+.vorteil-dunkel {
+  border-color: var(--nacht-linie);
+  background: var(--nacht);
+  color: var(--nacht-text);
+}
+
+.vorteil-dunkel p {
+  color: var(--nacht-leise);
+}
+
+.vorteil-symbol {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.4rem;
+  border-radius: var(--radius);
+  background: var(--kalk);
+  color: var(--ziegel);
+}
+
+.vorteil-dunkel .vorteil-symbol {
+  background: var(--nacht-3);
+  color: var(--ziegel-hell);
+}
+
+.vorteil-symbol svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.vorteil h3 {
+  font-size: 1.1875rem;
+  letter-spacing: -0.015em;
+}
+
+.vorteil-gross h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+}
+
+.vorteil p {
+  color: var(--text-leise);
+  font-size: 0.975rem;
+}
+
+.vorteil-dunkel p {
+  color: var(--nacht-leise);
+}
+
+.vorteil .vorteil-zitat {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  color: var(--ziegel-hell);
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.welle {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 2.25rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.welle i {
+  width: 4px;
+  height: var(--h, 40%);
+  border-radius: 4px;
+  background: var(--ziegel);
+  opacity: 0.85;
+  animation: welle 1.4s ease-in-out infinite alternate;
+  animation-delay: calc(var(--n) * -0.13s);
+}
+
+@keyframes welle {
+  from {
+    transform: scaleY(0.35);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ---------- Branchen ---------- */
+
+.branchen {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+.branchen li {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--nacht-linie);
+  border-radius: 999px;
+  color: var(--nacht-text);
+  font-size: 0.9375rem;
+}
+
+.branchen-notiz {
+  margin-top: 2.5rem;
+  color: var(--nacht-leise);
+  text-align: center;
+}
+
+.branchen-notiz .hand {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--ziegel-hell);
+  font-size: 1.6rem;
+}
+
+/* ---------- Preise ---------- */
+
+.umschalter {
+  display: inline-flex;
+  gap: 0.25rem;
+  margin: 0 auto 2.75rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: var(--kalk);
+}
+
+.umschalter-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.umschalter button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-leise);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.umschalter button[aria-pressed="true"] {
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 1px 3px rgb(47 47 47 / 0.12);
+}
+
+.umschalter small {
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: rgb(181 69 47 / 0.12);
+  color: var(--ziegel);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pakete {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.paket {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--linie);
+  border-radius: calc(var(--radius) * 1.6);
+  background: #fff;
+}
+
+.paket-empfohlen {
+  border-color: var(--nacht);
+  background: var(--nacht);
+  color: var(--nacht-text);
+  box-shadow: 0 24px 48px -24px rgb(18 17 16 / 0.55);
+}
+
+.paket-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.paket-fuer {
+  margin-top: 0.25rem;
+  color: var(--text-leise);
+  font-size: 0.9375rem;
+}
+
+.paket-empfohlen .paket-fuer {
+  color: var(--nacht-leise);
+}
+
+.preis {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+}
+
+.preis-betrag {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.preis-einheit {
+  color: var(--text-leise);
+  font-size: 0.9375rem;
+}
+
+.paket-empfohlen .preis-einheit {
+  color: var(--nacht-leise);
+}
+
+.preis-zusatz {
+  min-height: 1.4em;
+  margin-top: 0.4rem;
+  color: var(--text-leise);
+  font-size: 0.8125rem;
+}
+
+.paket-empfohlen .preis-zusatz {
+  color: var(--nacht-leise);
+}
+
+.paket-liste {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1.75rem 0 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linie);
+  font-size: 0.9625rem;
+}
+
+.paket-empfohlen .paket-liste {
+  border-top-color: var(--nacht-linie);
+}
+
+.paket-liste li {
+  display: grid;
+  grid-template-columns: 1.1rem minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+.paket-liste svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.22rem;
+  color: var(--ziegel);
+}
+
+.paket-empfohlen .paket-liste svg {
+  color: var(--ziegel-hell);
+}
+
+.paket .knopf {
+  margin-top: auto;
+}
+
+.paket-notiz {
+  position: absolute;
+  top: -2.6rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+  color: var(--ziegel);
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  transform: rotate(-4deg);
+}
+
+.paket-notiz svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: -1rem;
+}
+
+.alle-pakete {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: 2.25rem;
+  color: var(--text-leise);
+  font-size: 0.9375rem;
+}
+
+.alle-pakete strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.alle-pakete li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.alle-pakete svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--ziegel);
+}
+
+.extras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.extra {
+  padding: 1.35rem 1.5rem;
+  border: 1px dashed #d3c6b9;
+  border-radius: calc(var(--radius) * 1.4);
+  background: var(--papier);
+}
+
+.extra strong {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.extra p {
+  margin-top: 0.35rem;
+  color: var(--text-leise);
+  font-size: 0.9375rem;
+}
+
+.gruenderpreis {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-top: 1rem;
+  padding: 1.75rem clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: calc(var(--radius) * 1.6);
+  background: var(--ziegel);
+  color: #fff;
+  overflow: hidden;
+}
+
+.gruenderpreis::after {
+  content: "";
+  position: absolute;
+  right: -3rem;
+  top: -3rem;
+  width: 12rem;
+  height: 12rem;
+  border: 2px solid rgb(255 255 255 / 0.18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.gruenderpreis .hand {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.gruenderpreis h3 {
+  margin-top: 0.35rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+}
+
+.gruenderpreis p {
+  margin-top: 0.35rem;
+  color: rgb(255 255 255 / 0.88);
+}
+
+.gruenderpreis .knopf {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  color: var(--ziegel-dunkel);
+}
+
+.gruenderpreis .knopf:hover {
+  background: var(--kalk);
+}
+
+.preise-fuss {
+  margin-top: 1.5rem;
+  color: var(--text-leise);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+/* ---------- Fragen ---------- */
+
+.fragen {
+  max-width: 50rem;
+  margin-inline: auto;
+  border-top: 1px solid var(--linie);
+}
+
+.frage {
+  border-bottom: 1px solid var(--linie);
+}
+
+.frage summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.35rem 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  list-style: none;
+  cursor: pointer;
+}
+
+.frage summary::-webkit-details-marker {
+  display: none;
+}
+
+.frage summary::after {
+  content: "";
+  flex-shrink: 0;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-right: 0.35rem;
+  border-right: 2px solid var(--ziegel);
+  border-bottom: 2px solid var(--ziegel);
+  transform: translateY(-25%) rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+.frage[open] summary::after {
+  transform: translateY(15%) rotate(-135deg);
+}
+
+.frage-antwort {
+  padding: 0 0.25rem 1.5rem;
+  color: var(--text-leise);
+}
+
+.frage-antwort p + p {
+  margin-top: 0.75rem;
+}
+
+/* ---------- Abschluss ---------- */
+
+.abschluss {
+  overflow: hidden;
+  text-align: center;
+}
+
+.abschluss h2 {
+  max-width: 40rem;
+  margin-inline: auto;
+  font-size: clamp(2.2rem, 5vw, 3.75rem);
+  letter-spacing: -0.03em;
+}
+
+.abschluss p {
+  max-width: 36rem;
+  margin: 1.25rem auto 0;
+  color: var(--nacht-leise);
+  font-size: 1.125rem;
+}
+
+.abschluss .hero-aktionen {
+  justify-content: center;
+}
+
+.abschluss .abschluss-mail {
+  margin-top: 1.5rem;
+  color: var(--nacht-leise);
+  font-size: 0.9375rem;
+}
+
+.abschluss-mail a {
+  color: var(--nacht-text);
+  text-decoration-color: var(--ziegel-hell);
+  text-underline-offset: 3px;
+}
+
+.stempel {
+  display: block;
+  width: 7rem;
+  height: 7rem;
+  margin: 0 auto 1.5rem;
+  color: var(--ziegel-hell);
+  transform: rotate(-12deg);
+}
+
+/* ---------- Fußzeile ---------- */
+
+.fuss {
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--nacht-linie);
+  font-size: 0.9375rem;
+}
+
+.fuss-innen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+}
+
+.fuss-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.fuss a {
+  color: var(--nacht-leise);
+  text-decoration: none;
+}
+
+.fuss a:hover {
+  color: var(--nacht-text);
+}
+
+.fuss-copy {
+  color: var(--nacht-leise);
+}
+
+/* ---------- Einblenden beim Scrollen ---------- */
+
+.js [data-einblenden] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 0.08s);
+}
+
+.js [data-einblenden].ist-sichtbar {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Rechtstexte ---------- */
+
+.recht {
+  max-width: 46rem;
+  padding-block: clamp(3rem, 8vw, 5rem);
+}
+
+.recht h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+.recht h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.recht p,
+.recht ul {
+  margin-bottom: 0.9rem;
+  color: var(--text);
+}
+
+.recht ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.recht a {
+  color: var(--ziegel);
+  text-underline-offset: 3px;
+}
+
+.recht .stand {
+  margin-top: 0.5rem;
+  color: var(--text-leise);
+  font-size: 0.9375rem;
+}
+
+/* ---------- Responsiv ---------- */
+
+@media (max-width: 62rem) {
+  .kopf-links {
+    display: none;
+  }
+
+  .hero-innen {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-bild {
+    max-width: 36rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .problem {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .schritte {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1.5rem;
+  }
+
+  .beispiel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .beispiel-pfeil svg {
+    transform: rotate(90deg);
+    width: 4rem;
+  }
+
+  .vorteil,
+  .vorteil-gross {
+    grid-column: span 3;
+  }
+
+  .pakete {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+
+  .paket-empfohlen {
+    order: -1;
+    margin-top: 1.5rem;
+  }
+
+  .extras {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 40rem) {
+  body {
+    font-size: 1rem;
+  }
+
+  .kopf-aktionen .knopf-rahmen {
+    display: none;
+  }
+
+  .menue-knopf {
+    display: inline-flex;
+  }
+
+  .kopf-aktionen .knopf-primaer {
+    display: none;
+  }
+
+  .hero-aktionen .knopf {
+    flex: 1 1 100%;
+  }
+
+  .hero-aussagen {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.1rem;
+  }
+
+  .schritte {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vorteil,
+  .vorteil-gross {
+    grid-column: span 6;
+  }
+
+  .karte-status {
+    display: none;
+  }
+
+  /* Entwurfstabelle: Einzelpreis ausblenden, damit nichts überläuft. */
+  .entwurf-tabelle .spalte-ep {
+    display: none;
+  }
+
+  .entwurf-tabelle th,
+  .entwurf-tabelle td {
+    padding-inline: 0.5rem;
+  }
+
+  .gruenderpreis .knopf {
+    width: 100%;
+  }
+}
+
+/* Mobiles Menü */
+.menue {
+  display: none;
+  padding: 0.5rem var(--rand) 1.25rem;
+  border-top: 1px solid var(--nacht-linie);
+}
+
+.menue.ist-offen {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.menue a:not(.knopf) {
+  padding: 0.75rem 0;
+  color: var(--nacht-text);
+  font-size: 1.0625rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--nacht-linie);
+}
+
+.menue .knopf {
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 40.01rem) {
+  .menue,
+  .menue.ist-offen {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .skizze-strich,
+  .skizze-text {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  .welle i {
+    animation: none;
+  }
+
+  .js [data-einblenden] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .notizzettel li::after {
+    transition: none;
+  }
+}
