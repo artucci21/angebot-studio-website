@@ -1528,6 +1528,66 @@ ol {
   color: var(--nacht-leise);
 }
 
+/* Zweite Zeile der Fußzeile: links das ©, rechts die Studio-Reihe. */
+.fuss-unten {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+/* Querverweis auf die übrigen Produkte der Studio-Reihe – wie in Chancen Studio. */
+.studio-reihe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--nacht-leise);
+}
+
+.studio-reihe-label {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.fuss a.studio-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--nacht-linie);
+  border-radius: 999px;
+  color: var(--nacht-leise);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.fuss a.studio-chip:hover {
+  border-color: var(--nacht-leise);
+  color: var(--nacht-text);
+}
+
+.studio-punkt {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--farbe);
+}
+
+.studio-chip svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  opacity: 0.6;
+}
+
+.studio-chip:hover svg {
+  opacity: 1;
+}
+
 /* ---------- Einblenden beim Scrollen ---------- */
 
 .js [data-einblenden] {
