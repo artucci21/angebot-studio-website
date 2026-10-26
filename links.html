@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Links · Studio-Reihe</title>
+    <meta name="description" content="Angebot Studio und Chancen Studio – Pilotzugang, Impressum und Datenschutz." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#121110" />
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Link-in-Bio-Seite für Instagram: eine Spalte, große Tippflächen, kein Tracking. */
+      .links { min-height: 100vh; padding: 3rem var(--rand) 2rem; display: flex; justify-content: center; }
+      .links-innen { width: 100%; max-width: 26rem; display: flex; flex-direction: column; gap: 1rem; }
+      .links-kopf { text-align: center; margin-bottom: 1rem; }
+      .links-kopf p { margin: 0.5rem 0 0; color: var(--nacht-leise); }
+      .links-kopf .ueber { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nacht-leise); margin: 0; }
+      .links-kopf h1 { margin: 0.5rem 0 0; font-size: 1.75rem; letter-spacing: -0.02em; color: var(--nacht-text); }
+      .produkt { display: block; padding: 1.1rem 1.25rem; border-radius: 0.9rem; background: var(--nacht-2); border: 1px solid var(--nacht-linie);
+        color: var(--nacht-text); text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
+      .produkt:hover { border-color: var(--akzent); }
+      .produkt:active { transform: scale(0.99); }
+      .produkt-marke { display: flex; align-items: center; gap: 0.6rem; font-size: 1.2rem; letter-spacing: -0.02em; }
+      .produkt-marke svg { width: 1.8rem; height: 1.8rem; flex: none; }
+      .produkt-marke span span { margin-left: 0.2em; color: var(--akzent); }
+      .produkt p { margin: 0.45rem 0 0; color: var(--nacht-leise); font-size: 0.95rem; }
+      .produkt .knopf { margin-top: 0.9rem; width: 100%; justify-content: center; background: var(--akzent); color: var(--knopf-text); border-color: transparent; }
+      .angebot { --akzent: var(--ziegel-hell); --knopf-text: #fff; }
+      .chancen { --akzent: #ddf47b; --knopf-text: #143a2f; }
+      .links-fuss { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.25rem; font-size: 0.9rem; }
+      .links-fuss a { color: var(--nacht-leise); }
+    </style>
+  </head>
+  <body class="nacht raster">
+    <main class="links">
+      <div class="links-innen">
+        <header class="links-kopf">
+          <p class="ueber">Studio-Reihe</p>
+          <h1>Weniger Papierkram. Mehr Aufträge.</h1>
+          <p>Zwei Werkzeuge für Betriebe, die Anfragen schneller in Aufträge verwandeln wollen.</p>
+        </header>
+
+        <a class="produkt angebot" href="./#pilot">
+          <span class="produkt-marke">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M9 7h30a5 5 0 0 1 5 5v17a5 5 0 0 1-5 5H23l-9 8v-8H9a5 5 0 0 1-5-5V12a5 5 0 0 1 5-5z" fill="#B5452F" />
+              <rect x="12" y="14" width="20" height="3.2" rx="1.6" fill="#F4EFEA" />
+              <rect x="12" y="21" width="13" height="3.2" rx="1.6" fill="#F4EFEA" />
+              <rect x="29" y="19.5" width="7" height="7" rx="1.5" fill="#2F2F2F" />
+            </svg>
+            <span><b>angebot</b><span>studio</span></span>
+          </span>
+          <p>Aus Anfragen werden Angebote – Preise aus Ihrem Katalog, nicht von der KI.</p>
+          <span class="knopf">Pilotzugang anfragen</span>
+        </a>
+
+        <a class="produkt chancen" href="https://chancen-studio.de" rel="noopener">
+          <span class="produkt-marke">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="2" y="2" width="44" height="44" rx="12" fill="#DDF47B" />
+              <path d="M11 35h9.5v-7.5H29v-7h8.5v-7.5" fill="none" stroke="#143A2F" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="37.5" cy="13" r="4.3" fill="#143A2F" />
+              <circle cx="37.5" cy="13" r="1.4" fill="#DDF47B" />
+            </svg>
+            <span><b>chancen</b><span>studio</span></span>
+          </span>
+          <p>Aus Daten wird Durchblick – sehen, wo Anfragen verloren gehen. 30 Tage testen.</p>
+          <span class="knopf">Chancen Studio ansehen</span>
+        </a>
+
+        <nav class="links-fuss" aria-label="Rechtliches">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+      </div>
+    </main>
+  </body>
+</html>
